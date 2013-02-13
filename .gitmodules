@@ -1,0 +1,15 @@
+[submodule "melpa"]
+    path = melpa
+    url = git://github.com/milkypostman/melpa
+
+[submodule "vendor/coffee-mode"]
+    path = vendor/coffee-mode
+	url = git://github.com/defunkt/coffee-mode
+
+[submodule "vendor/haskell-mode"]
+    path = vendor/haskell-mode
+	url = git://github.com/haskell/haskell-mode
+
+[submodule "vendor/solarized"]
+    path = vendor/solarized
+	url = git://github.com/altercation/solarized
