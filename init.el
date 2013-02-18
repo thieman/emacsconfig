@@ -65,7 +65,7 @@
 ; solarized custom theme
 (add-to-list 'load-path "~/.emacs.d/vendor/solarized")
 (require 'color-theme-solarized)
-(color-theme-solarized-dark)
+(color-theme-solarized-light)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
