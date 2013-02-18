@@ -47,6 +47,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/jinja2")
 (require 'jinja2-mode)
 (autoload 'jinja2-mode "jinja2" nil t)
+(add-to-list 'auto-mode-alist '("\\.html$" . jinja2-mode))
 ; haskell
 (load "~/.emacs.d/vendor/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
