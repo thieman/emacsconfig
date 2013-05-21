@@ -33,6 +33,11 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ; additional language modes
+; yaml mode
+(add-to-list 'load-path "~/.emacs.d/vendor/yaml-mode")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 ; coffee-script mode
 (add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
 (require 'coffee-mode)
