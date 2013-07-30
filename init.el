@@ -100,10 +100,6 @@
 ; uncomment to enable flymake-mode on python file load
 ; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
-
 ; fix for env in gui emacs
 (defun setenv-from-shell (varname)
   (setenv varname (replace-regexp-in-string
