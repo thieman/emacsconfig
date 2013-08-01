@@ -32,6 +32,33 @@
 ; custom standard hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+; terminal stuff
+(defadvice ansi-term (after advise-ansi-term-coding-system)
+    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+(ad-activate 'ansi-term)
+
+(custom-set-variables
+ '(comint-scroll-to-bottom-on-input t)
+ '(comint-scroll-to-bottom-on-output t)
+)
+
+(ansi-color-for-comint-mode-on)
+
+(shell "*shell5*")
+(shell "*shell6*")
+(shell "*shell7*")
+
+(global-set-key [(control \5)]
+  (lambda () (interactive) (switch-to-buffer "*shell5*")))
+(global-set-key [(control \6)]
+  (lambda () (interactive) (switch-to-buffer "*shell6*")))
+(global-set-key [(control \7)]
+  (lambda () (interactive) (switch-to-buffer "*shell7*")))
+
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
+
 ; additional language modes
 ; yaml mode
 (add-to-list 'load-path "~/.emacs.d/vendor/yaml-mode")
