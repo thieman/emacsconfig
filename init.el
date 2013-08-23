@@ -19,6 +19,8 @@
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
 
+(setq initial-scratch-message "")
+
 ; custom function defs
 (defun revert-all-buffers ()
     "Refreshes all open buffers from their respective files."
@@ -44,20 +46,29 @@
 
 (ansi-color-for-comint-mode-on)
 
-(shell "*shell5*")
-(shell "*shell6*")
-(shell "*shell7*")
+(ansi-term "bash" "term5")
+(ansi-term "bash" "term6")
+(ansi-term "bash" "term7")
 
 (global-set-key [(control \5)]
-  (lambda () (interactive) (switch-to-buffer "*shell5*")))
+  (lambda () (interactive) (switch-to-buffer "*term5*")))
 (global-set-key [(control \6)]
-  (lambda () (interactive) (switch-to-buffer "*shell6*")))
+  (lambda () (interactive) (switch-to-buffer "*term6*")))
 (global-set-key [(control \7)]
-  (lambda () (interactive) (switch-to-buffer "*shell7*")))
+  (lambda () (interactive) (switch-to-buffer "*term7*")))
 
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
   (flet ((process-list ())) ad-do-it))
+
+(add-to-list 'load-path "~/.emacs.d/vendor/bash-completion")
+;; (autoload 'bash-completion-dynamic-complete
+;;   "bash-completion"
+;;   "BASH completion hook")
+;; (add-hook 'shell-dynamic-complete-functions
+;;   'bash-completion-dynamic-complete)
+;; (add-hook 'shell-command-complete-functions
+;;   'bash-completion-dynamic-complete)
 
 ; additional language modes
 ; yaml mode
