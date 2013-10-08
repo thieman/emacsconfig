@@ -40,9 +40,17 @@
 (ad-activate 'ansi-term)
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(comint-scroll-to-bottom-on-input t)
  '(comint-scroll-to-bottom-on-output t)
-)
+ '(custom-enabled-themes (quote (hickey)))
+ '(custom-safe-themes (quote ("e26780280b5248eb9b2d02a237d9941956fc94972443b0f7aeec12b5c15db9f3" "f220c05492910a305f5d26414ad82bf25a321c35aa05b1565be12f253579dec6" "d0ff5ea54497471567ed15eb7279c37aef3465713fb97a50d46d95fe11ab4739" default)))
+ '(inhibit-startup-screen t)
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
 
 (ansi-color-for-comint-mode-on)
 
@@ -101,22 +109,6 @@
 (add-hook 'git-commit-mode-hook 'turn-on-flyspell)
 (add-hook 'git-commit-mode-hook (lambda () (toggle-save-place 0)))
 
-; color-theme
-(add-to-list 'load-path "~/.emacs.d/vendor/color-theme")
-(require 'color-theme)
-(color-theme-initialize)
-; solarized custom theme
-(add-to-list 'load-path "~/.emacs.d/vendor/solarized")
-(require 'color-theme-solarized)
-(color-theme-solarized-light)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(scroll-bar-mode nil)
- '(tool-bar-mode nil))
-
 (set-face-attribute 'default nil :family "Source Code Pro")
 
 (ido-mode)
@@ -147,3 +139,9 @@
 (setenv-from-shell "PYTHONPATH")
 (setenv-from-shell "PATH")
 (setenv-from-shell "TMPDIR")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
