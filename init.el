@@ -1,3 +1,14 @@
+; os x stuff
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+(defun toggle-fullscreen ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+
 ; melpa
 (require 'package)
 (add-to-list 'package-archives
@@ -40,9 +51,17 @@
 (ad-activate 'ansi-term)
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(comint-scroll-to-bottom-on-input t)
  '(comint-scroll-to-bottom-on-output t)
-)
+ '(custom-safe-themes
+   (quote
+	("e26780280b5248eb9b2d02a237d9941956fc94972443b0f7aeec12b5c15db9f3" default)))
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
 
 (ansi-color-for-comint-mode-on)
 
@@ -109,13 +128,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/solarized")
 (require 'color-theme-solarized)
 (color-theme-solarized-light)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(scroll-bar-mode nil)
- '(tool-bar-mode nil))
+
 
 (set-face-attribute 'default nil :family "Source Code Pro")
 
@@ -147,3 +160,9 @@
 (setenv-from-shell "PYTHONPATH")
 (setenv-from-shell "PATH")
 (setenv-from-shell "TMPDIR")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
