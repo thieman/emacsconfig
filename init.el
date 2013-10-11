@@ -69,7 +69,9 @@
  '(comint-scroll-to-bottom-on-input t)
  '(comint-scroll-to-bottom-on-output t)
  '(custom-enabled-themes (quote (hickey)))
- '(custom-safe-themes (quote ("29a4267a4ae1e8b06934fec2ee49472daebd45e1ee6a10d8ff747853f9a3e622" "61d1a82d5eaafffbdd3cab1ac843da873304d1f05f66ab5a981f833a3aec3fc0" "d293542c9d4be8a9e9ec8afd6938c7304ac3d0d39110344908706614ed5861c9" "c7359bd375132044fe993562dfa736ae79efc620f68bab36bd686430c980df1c" "e26780280b5248eb9b2d02a237d9941956fc94972443b0f7aeec12b5c15db9f3" "f220c05492910a305f5d26414ad82bf25a321c35aa05b1565be12f253579dec6" "d0ff5ea54497471567ed15eb7279c37aef3465713fb97a50d46d95fe11ab4739" default)))
+ '(custom-safe-themes
+   (quote
+	("978bd4603630ecb1f01793af60beb52cb44734fc14b95c62e7b1a05f89b6c811" "29a4267a4ae1e8b06934fec2ee49472daebd45e1ee6a10d8ff747853f9a3e622" "61d1a82d5eaafffbdd3cab1ac843da873304d1f05f66ab5a981f833a3aec3fc0" "d293542c9d4be8a9e9ec8afd6938c7304ac3d0d39110344908706614ed5861c9" "c7359bd375132044fe993562dfa736ae79efc620f68bab36bd686430c980df1c" "e26780280b5248eb9b2d02a237d9941956fc94972443b0f7aeec12b5c15db9f3" "f220c05492910a305f5d26414ad82bf25a321c35aa05b1565be12f253579dec6" "d0ff5ea54497471567ed15eb7279c37aef3465713fb97a50d46d95fe11ab4739" default)))
  '(inhibit-startup-screen t)
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
@@ -114,11 +116,6 @@
 (load "~/.emacs.d/vendor/haskell-mode/haskell-site-file")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-; git-commit
-(add-to-list 'load-path "~/.emacs.d/vendor/git-commit-mode")
-(require 'git-commit)
-(add-hook 'git-commit-mode-hook 'turn-on-flyspell)
-(add-hook 'git-commit-mode-hook (lambda () (toggle-save-place 0)))
 
 (set-face-attribute 'default nil :family "Source Code Pro")
 
