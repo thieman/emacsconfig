@@ -29,11 +29,13 @@
 (setq-default tab-width 4)
 (setq whitespace-line-column 80)
 (setq require-final-newline 't)
+(setq-default indent-tabs-mode nil)  ; seriously, fuck tabs
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ; key bindings
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
+(global-set-key (kbd "M-s") 'soundcloud)
 
 (setq initial-scratch-message "")
 
