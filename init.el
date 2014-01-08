@@ -36,6 +36,7 @@
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
 (global-set-key (kbd "M-s") 'soundcloud)
+(global-set-key (kbd "C-x g") 'ag-project)
 
 (setq initial-scratch-message "")
 
@@ -193,3 +194,8 @@
 (autoload 'pymacs-load "pymacs" nil t)
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
+
+;; ag
+(setq ag-highlight-search 't)
+(setq ag-reuse-buffers 't)
+(setq ag-reuse-window 't)
