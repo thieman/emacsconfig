@@ -114,9 +114,6 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-; coffee-script mode
-(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
-(require 'coffee-mode)
 ; handlebars-mode
 (add-to-list 'load-path "~/.emacs.d/vendor/handlebars-mode")
 (require 'handlebars-mode)
