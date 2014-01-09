@@ -28,6 +28,10 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(defmacro after (mode &rest body)
+  `(eval-after-load ,mode
+     '(progn ,@body)))
+
 ; os x stuff
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -92,6 +96,13 @@
           (revert-buffer t t t) )))
     (message "Refreshed open files.") )
 
+;; when you start typing after having marked a region, delete that region
+;; and replace with what you're typing
+(pending-delete-mode 1)
+
+;; don't confirm creation when switching to a non-existant buffer
+(setq ido-create-new-buffer 'always)
+
 ;;-- init.nav.uniquify
 ;; uniquify adds more information to the status bar when buffers share names
 ;; e.g. instead of project.clj<2>, you get project.clj@my-project
@@ -100,6 +111,8 @@
 (setq uniquify-separator "@")
 
 (show-paren-mode 1)
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode-enable)
+(after 'clojure-mode (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode-enable))
 
 ; custom standard hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -164,10 +177,6 @@
 (setq jedi:complete-on-dot t)
 
 ;; rope and pymacs
-(defmacro after (mode &rest body)
-  `(eval-after-load ,mode
-     '(progn ,@body)))
-
 (after 'auto-complete
        (add-to-list 'ac-dictionary-directories "~/.emacs.d/dict")
        (setq ac-use-menu-map t)
@@ -208,3 +217,10 @@
 
 ;; dired+
 (toggle-diredp-find-file-reuse-dir 1)
+
+;; circe
+(setq circe-reduce-lurker-spam t)
+(setq circe-serve-max-reconnect-attempts nil)
+(after 'circe
+       (require 'circe-color-nicks)
+       (enable-circle-color-nicks))
