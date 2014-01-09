@@ -1,3 +1,33 @@
+(setq user-packages
+  '(ace-jump-mode
+    ac-nrepl
+    ag
+    auto-complete
+    cider
+    circe
+    clojure-cheatsheet
+    clojure-mode
+    coffee-mode
+    dired+
+    handlebars-mode
+    jedi
+    jinja2-mode
+    js2-mode
+    magit
+    minimap
+    nrepl
+    powerline
+    rainbow-delimiters
+    smex
+    soundcloud
+    sublime-themes
+    yaml-mode))
+
+(package-initialize)
+(dolist (p user-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 ; os x stuff
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -33,6 +63,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ; key bindings
+(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
 (global-set-key (kbd "M-s") 'soundcloud)
@@ -108,34 +139,6 @@
 ;; (add-hook 'shell-command-complete-functions
 ;;   'bash-completion-dynamic-complete)
 
-; additional language modes
-; yaml mode
-(add-to-list 'load-path "~/.emacs.d/vendor/yaml-mode")
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-; coffee-script mode
-(add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
-(require 'coffee-mode)
-; handlebars-mode
-(add-to-list 'load-path "~/.emacs.d/vendor/handlebars-mode")
-(require 'handlebars-mode)
-; js2
-(add-to-list 'load-path "~/.emacs.d/vendor/javascript")
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(autoload 'js2-mode "js2-mode" nil t)
-; jinja2
-(add-to-list 'load-path "~/.emacs.d/vendor/jinja2")
-(require 'jinja2-mode)
-(autoload 'jinja2-mode "jinja2" nil t)
-(add-to-list 'auto-mode-alist '("\\.html$" . jinja2-mode))
-; haskell
-(load "~/.emacs.d/vendor/haskell-mode/haskell-site-file")
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-; (set-face-attribute 'default nil :family "Source Code Pro")
-
 (ido-mode)
 
 ; fix for env in gui emacs
@@ -199,3 +202,9 @@
 (setq ag-highlight-search 't)
 (setq ag-reuse-buffers 't)
 (setq ag-reuse-window 't)
+
+;; powerline
+(powerline-default-theme)
+
+;; dired+
+(toggle-diredp-find-file-reuse-dir 1)
