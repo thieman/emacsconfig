@@ -24,9 +24,9 @@
     yaml-mode))
 
 (require 'package)
-(package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 (dolist (p user-packages)
   (when (not (package-installed-p p))
     (package-install p)))
