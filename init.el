@@ -1,6 +1,5 @@
 (setq user-packages
   '(ace-jump-mode
-    ac-nrepl
     ag
     auto-complete
     cider
@@ -17,7 +16,6 @@
     js2-mode
     magit
     minimap
-    nrepl
     powerline
     rainbow-delimiters
     smex
