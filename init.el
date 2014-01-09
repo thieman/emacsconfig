@@ -25,7 +25,10 @@
     sublime-themes
     yaml-mode))
 
+(require 'package)
 (package-initialize)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (dolist (p user-packages)
   (when (not (package-installed-p p))
     (package-install p)))
@@ -44,11 +47,6 @@
   (set-frame-parameter
      nil 'fullscreen
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
-
-(require 'package)
-(package-initialize)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ; emms
 (setq exec-path (append exec-path '("/usr/local/bin")))
