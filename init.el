@@ -14,6 +14,7 @@
     jedi
     jinja2-mode
     js2-mode
+    less-css-mode
     magit
     minimap
     powerline
@@ -27,8 +28,12 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+(setq packages-refreshed nil)
 (dolist (p user-packages)
   (when (not (package-installed-p p))
+    (when (not packages-refreshed)
+      (package-refresh-contents)
+      (setq packages-refreshed 't))
     (package-install p)))
 
 (defmacro after (mode &rest body)
