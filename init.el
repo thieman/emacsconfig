@@ -10,7 +10,10 @@
     color-theme-sanityinc-tomorrow
     color-theme-sanityinc-solarized
     dired+
+    flx-ido
     handlebars-mode
+    helm
+    helm-projectile
     jedi
     jinja2-mode
     js2-mode
@@ -18,6 +21,7 @@
     magit
     minimap
     powerline
+    projectile
     rainbow-delimiters
     smex
     soundcloud
@@ -201,3 +205,12 @@
 (after 'circe
        (require 'circe-color-nicks)
        (enable-circle-color-nicks))
+
+;; projectile
+(projectile-global-mode)
+(defun projectile-test-prefix (project-type) nil)
+(defun projectile-test-suffix (project-type)
+  (cond
+   ((member project-type '(rails-rspec ruby-rspec)) "_spec")
+   ((member project-type '(rails-test ruby-test lein django python)) "_test")
+   ((member project-type '(maven symfony)) "Test")))
