@@ -145,32 +145,8 @@
   (flet ((process-list ())) ad-do-it))
 
 (add-to-list 'load-path "~/.emacs.d/vendor/bash-completion")
-;; (autoload 'bash-completion-dynamic-complete
-;;   "bash-completion"
-;;   "BASH completion hook")
-;; (add-hook 'shell-dynamic-complete-functions
-;;   'bash-completion-dynamic-complete)
-;; (add-hook 'shell-command-complete-functions
-;;   'bash-completion-dynamic-complete)
 
 (ido-mode)
-
-; fix for env in gui emacs
-(defun setenv-from-shell (varname)
-  (setenv varname (replace-regexp-in-string
-				   "[ \t\n]*$"
-				   ""
-				   (shell-command-to-string (concat "$SHELL --login -i -c 'echo $" varname "'")))))
-(setenv-from-shell "PYTHONPATH")
-(setenv-from-shell "PATH")
-(setenv-from-shell "TMPDIR")
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'erase-buffer 'disabled nil)
 
 ;; jedi
 (add-hook 'python-mode-hook 'jedi:setup)
