@@ -10,6 +10,7 @@
     color-theme-sanityinc-tomorrow
     color-theme-sanityinc-solarized
     dired+
+    exec-path-from-shell
     flx-ido
     handlebars-mode
     helm
