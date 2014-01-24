@@ -73,6 +73,8 @@
 (setq require-final-newline 't)
 (setq-default indent-tabs-mode nil)  ; seriously, fuck tabs
 (defalias 'yes-or-no-p 'y-or-n-p)
+(setq sgml-basic-offset 4)  ; use 4 space indent in html mode
+(add-to-list 'auto-mode-alist '("\\.html\\'" . jinja2-mode))  ;; use jinja2-mode for html files
 
 ; key bindings
 (global-set-key (kbd "M-x") 'smex)
@@ -215,3 +217,8 @@
    ((member project-type '(rails-rspec ruby-rspec)) "_spec")
    ((member project-type '(rails-test ruby-test lein django python)) "_test")
    ((member project-type '(maven symfony)) "Test")))
+
+;; exec-path-from-shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+(exec-path-from-shell-copy-env "PYTHONPATH")
