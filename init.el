@@ -47,6 +47,9 @@
   `(eval-after-load ,mode
      '(progn ,@body)))
 
+; theme
+(add-hook 'after-init-hook (lambda () (load-theme 'hickey t)))
+
 ; os x stuff
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
