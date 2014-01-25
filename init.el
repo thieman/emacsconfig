@@ -29,17 +29,19 @@
     sublime-themes
     yaml-mode))
 
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-(setq packages-refreshed nil)
-(dolist (p user-packages)
-  (when (not (package-installed-p p))
-    (when (not packages-refreshed)
-      (package-refresh-contents)
-      (setq packages-refreshed 't))
-    (package-install p)))
+(defun thieman-install-packages ()
+  "Install any missing packages from the package list."
+  (interactive)
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (setq packages-refreshed nil)
+  (dolist (p user-packages)
+    (when (not (package-installed-p p))
+      (when (not packages-refreshed)
+        (package-refresh-contents)
+        (setq packages-refreshed 't))
+      (package-install p))))
 
 (defmacro after (mode &rest body)
   `(eval-after-load ,mode
@@ -57,10 +59,10 @@
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
 ; emms
-(setq exec-path (append exec-path '("/usr/local/bin")))
-(require 'emms-setup)
-(emms-standard)
-(emms-default-players)
+(after 'emms
+       (require 'emms-setup)
+       (emms-standard)
+       (emms-default-players))
 
 ; stick backup files in the system temp directory
 (setq backup-directory-alist
@@ -197,10 +199,10 @@
 (setq ag-reuse-window 't)
 
 ;; powerline
-(powerline-default-theme)
+(after 'powerline (powerline-default-theme))
 
 ;; dired+
-(toggle-diredp-find-file-reuse-dir 1)
+(after 'dired (toggle-diredp-find-file-reuse-dir 1))
 
 ;; circe
 (setq circe-reduce-lurker-spam t)
@@ -210,15 +212,17 @@
        (enable-circle-color-nicks))
 
 ;; projectile
-(projectile-global-mode)
-(defun projectile-test-prefix (project-type) nil)
-(defun projectile-test-suffix (project-type)
-  (cond
-   ((member project-type '(rails-rspec ruby-rspec)) "_spec")
-   ((member project-type '(rails-test ruby-test lein django python)) "_test")
-   ((member project-type '(maven symfony)) "Test")))
+(after 'projectile
+       (projectile-global-mode)
+       (defun projectile-test-prefix (project-type) nil)
+       (defun projectile-test-suffix (project-type)
+         (cond
+          ((member project-type '(rails-rspec ruby-rspec)) "_spec")
+          ((member project-type '(rails-test ruby-test lein django python)) "_test")
+          ((member project-type '(maven symfony)) "Test"))))
 
 ;; exec-path-from-shell
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-(exec-path-from-shell-copy-env "PYTHONPATH")
+(after 'exec-path-from-shell
+       (when (memq window-system '(mac ns))
+         (exec-path-from-shell-initialize))
+       (exec-path-from-shell-copy-env "PYTHONPATH"))
