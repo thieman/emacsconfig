@@ -169,7 +169,7 @@
 
 (after 'auto-complete-config
        (ac-config-default)
-       (when (file-exists-p (expand-file-name "/Users/dcurtis/.emacs.d/elisp/Pymacs"))
+       (when (file-exists-p (expand-file-name "~/.emacs.d/elisp/Pymacs"))
          (ac-ropemacs-initialize)
          (ac-ropemacs-setup)))
 
