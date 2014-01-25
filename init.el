@@ -132,11 +132,6 @@
 ; custom standard hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-; terminal stuff
-(defadvice ansi-term (after advise-ansi-term-coding-system)
-    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-(ad-activate 'ansi-term)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -208,24 +203,24 @@
 (after 'dired (toggle-diredp-find-file-reuse-dir 1))
 
 ;; circe
-(setq circe-reduce-lurker-spam t)
-(setq circe-serve-max-reconnect-attempts nil)
 (after 'circe
        (require 'circe-color-nicks)
-       (enable-circle-color-nicks))
+       (setq circe-reduce-lurker-spam t)
+       (setq circe-serve-max-reconnect-attempts nil)
+       (enable-circe-color-nicks))
 
 ;; projectile
-(after 'projectile
-       (projectile-global-mode)
-       (defun projectile-test-prefix (project-type) nil)
-       (defun projectile-test-suffix (project-type)
-         (cond
-          ((member project-type '(rails-rspec ruby-rspec)) "_spec")
-          ((member project-type '(rails-test ruby-test lein django python)) "_test")
-          ((member project-type '(maven symfony)) "Test"))))
+(add-hook 'after-init-hook
+          (lambda ()
+            (projectile-global-mode)
+            (defun projectile-test-prefix (project-type) nil)
+            (defun projectile-test-suffix (project-type)
+              (cond
+               ((member project-type '(rails-rspec ruby-rspec)) "_spec")
+               ((member project-type '(rails-test ruby-test lein django python)) "_test")
+               ((member project-type '(maven symfony)) "Test")))))
 
 ;; exec-path-from-shell
-(after 'exec-path-from-shell
-       (when (memq window-system '(mac ns))
-         (exec-path-from-shell-initialize))
-       (exec-path-from-shell-copy-env "PYTHONPATH"))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "PYTHONPATH"))
