@@ -13,6 +13,7 @@
     dired+
     exec-path-from-shell
     flx-ido
+    gh
     handlebars-mode
     helm
     helm-projectile
