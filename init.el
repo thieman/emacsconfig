@@ -49,6 +49,10 @@
   `(eval-after-load ,mode
      '(progn ,@body)))
 
+(defmacro when-not-arm (&rest body)
+  `(when (not (string-match "arm" (emacs-version)))
+     '(progn ,@body)))
+
 ; theme
 (add-hook 'after-init-hook (lambda () (load-theme 'hickey t)))
 
@@ -85,7 +89,7 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . jinja2-mode))  ;; use jinja2-mode for html files
 
 ; key bindings
-(global-set-key (kbd "M-x") 'smex)
+(when-not-arm (global-set-key (kbd "M-x") 'smex))
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
 (global-set-key (kbd "M-s") 'soundcloud)
