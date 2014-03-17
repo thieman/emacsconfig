@@ -4,3 +4,5 @@ emms*
 auto-save-list*
 ac-comphist.dat
 projectile-bookmarks.eld
+.python-environments
+ido.last

@@ -50,8 +50,9 @@
      '(progn ,@body)))
 
 (defmacro when-not-arm (&rest body)
-  `(when (not (string-match "arm" (emacs-version)))
-     '(progn ,@body)))
+  `(when (or (string-match "darwin" (emacs-version))
+             (not (string-match "arm" (emacs-version))))
+     (progn ,@body)))
 
 ; theme
 (add-hook 'after-init-hook (lambda () (load-theme 'hickey t)))
