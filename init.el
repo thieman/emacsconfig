@@ -77,8 +77,7 @@
 ; stick backup files in the system temp directory
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+ (setq auto-save-default nil)
 
 (setq-default tab-width 4)
 (setq whitespace-line-column 80)
