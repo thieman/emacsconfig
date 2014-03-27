@@ -77,7 +77,7 @@
 ; stick backup files in the system temp directory
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
- (setq auto-save-default nil)
+(setq auto-save-default nil)
 
 (setq-default tab-width 4)
 (setq whitespace-line-column 80)
@@ -161,7 +161,11 @@
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
   (flet ((process-list ())) ad-do-it))
 
-(add-to-list 'load-path "~/.emacs.d/vendor/bash-completion")
+(defun python-custom ()
+  "Python mode stuff"
+  (define-key python-mode-map (kbd "M-]") 'python-indent-shift-right)
+  (define-key python-mode-map (kbd "M-[") 'python-indent-shift-left))
+(add-hook 'python-mode-hook '(lambda () (python-custom)))
 
 ;; jedi
 (add-hook 'python-mode-hook 'jedi:setup)
