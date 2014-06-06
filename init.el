@@ -10,6 +10,7 @@
     coffee-mode
     color-theme-sanityinc-tomorrow
     color-theme-sanityinc-solarized
+    dash-at-point
     dired+
     exec-path-from-shell
     flx-ido
