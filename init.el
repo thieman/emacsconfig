@@ -12,6 +12,7 @@
     color-theme-sanityinc-solarized
     dash-at-point
     dired+
+    dockerfile-mode
     exec-path-from-shell
     flx-ido
     gh
