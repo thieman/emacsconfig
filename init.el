@@ -26,6 +26,7 @@
     handlebars-mode
     helm
     helm-projectile
+    jedi
     jinja2-mode
     js2-mode
     js-doc
@@ -322,3 +323,7 @@
        (require 'go-projectile)
        (load-file "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el"))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
