@@ -1,0 +1,52 @@
+
+;; ----- smex-history -----
+(
+ revert-buffer
+ customize-option
+ customize-mode
+ revert-all-buffers
+ list-packages
+ thieman-install-packages
+ ag
+)
+
+;; ----- smex-data -----
+(
+ (python-mode . 1)
+ (replace-regexp . 1)
+ (ag . 22)
+ (thieman-install-packages . 6)
+ (package-initialize . 1)
+ (list-packages . 16)
+ (go-mode . 5)
+ (magit-blame-mode . 6)
+ (circe . 1)
+ (godef-jump . 1)
+ (eval-buffer . 1)
+ (package-install-from-buffer . 1)
+ (revert-all-buffers . 6)
+ (replace-string . 1)
+ (file-name-clipboard . 1)
+ (rename-file . 1)
+ (markdown-mode . 1)
+ (copy-file . 2)
+ (revert-buffer . 13)
+ (toggle-word-wrap . 1)
+ (ido-mode . 2)
+ (color-theme-sanityinc-solarized-light . 3)
+ (color-theme-sanityinc-solarized-dark . 1)
+ (load-theme . 1)
+ (color-theme-sanityinc-tomorrow-night . 1)
+ (color-theme-sanityinc-tomorrow-eighties . 1)
+ (color-theme-sanityinc-tomorrow-day . 1)
+ (magit-version . 2)
+ (package-menu-mark-upgrades . 1)
+ (git-commit-mode . 2)
+ (magit-status . 2)
+ (magit-blame . 7)
+ (package-list-packages . 1)
+ (magit-gh-pulls-merge-pull-request . 1)
+ (customize-mode . 1)
+ (customize-option . 1)
+ (jedi-mode . 1)
+)

@@ -1,3 +1,7 @@
+(when (boundp 'package-pinned-packages)
+  (setq package-pinned-packages
+        '(("magit" . "melpa-stable"))))
+
 (setq user-packages
   '(ace-jump-mode
     ag
@@ -22,13 +26,13 @@
     handlebars-mode
     helm
     helm-projectile
-    jedi
     jinja2-mode
     js2-mode
     js-doc
     less-css-mode
     lua-mode
     magit
+    magit-popup
     markdown-mode
     minimap
     powerline
@@ -46,7 +50,8 @@
   (interactive)
   (require 'package)
   (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+               '("melpa" . "http://melpa.org/packages/")
+               '("melpa-stable" . "http://stable.melpa.org/packages/"))
   (setq packages-refreshed nil)
   (dolist (p user-packages)
     (when (not (package-installed-p p))
@@ -118,14 +123,12 @@
 (when-not-arm (global-set-key (kbd "M-x") 'smex))
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
-(global-set-key (kbd "M-s") 'soundcloud)
 (global-set-key (kbd "C-x g") 'ag-project)
 (global-set-key (kbd "M-p") 'github-pulls)
 (global-set-key (kbd "C-c C-p") 'compile)
+(global-set-key (kbd "M-s") 'magit-status)
 
 (setq initial-scratch-message "")
-
-(global-auto-revert-mode)
 
 ; fullscreen on ubuntu
 (defun toggle-fullscreen ()
@@ -183,6 +186,7 @@
  '(inhibit-startup-screen t)
  '(js2-basic-offset 4)
  '(js2-strict-inconsistent-return-warning nil)
+ '(magit-revert-buffers (quote silent))
  '(projectile-test-prefix-function (quote default-projectile-prefix-unless-django))
  '(projectile-test-suffix-function (quote default-projectile-suffix-unless-django))
  '(scroll-bar-mode nil)
@@ -200,11 +204,6 @@
   (define-key python-mode-map (kbd "M-]") 'python-indent-shift-right)
   (define-key python-mode-map (kbd "M-[") 'python-indent-shift-left))
 (add-hook 'python-mode-hook '(lambda () (python-custom)))
-
-;; jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
 
 ;; ag
 (setq ag-highlight-search 't)
