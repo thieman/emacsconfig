@@ -61,6 +61,34 @@
         (setq packages-refreshed 't))
       (package-install p))))
 
+;; Dope stuff to make GitHub easier
+
+(setq thieman-github-names
+      '(("@erik" "@eriktaubeneck")
+        ("@ben" "@inlinestyle")
+        ("@nick" "@nrschultz")
+        ("@alex" "@paetling")
+        ("@kristian" "@kristiankristensen")
+        ("@ami" "@ami-kumar")
+        ("@gabby" "@gmr33")
+        ("@coolalex" "@aehsu")
+        ("@tom" "@tleach")
+        ("@jerry" "@confucious")
+        ("@eduardo" "@eduarenas80")
+        ("@jason" "@jasonmorganson")
+        ("@matt" "@mmccann34")))
+
+(defun thieman-sub-github-names ()
+  (interactive)
+  (save-excursion
+    (dolist (pair thieman-github-names acc)
+      (let ((simple-name (first pair))
+            (full-name (car (last pair))))
+        (beginning-of-buffer)
+        (replace-string simple-name full-name)
+        (setq acc '())))
+    (message nil)))
+
 (defmacro after (mode &rest body)
   `(eval-after-load ,mode
      '(progn ,@body)))
@@ -129,6 +157,7 @@
 (global-set-key (kbd "M-p") 'github-pulls)
 (global-set-key (kbd "C-c C-p") 'compile)
 (global-set-key (kbd "M-s") 'magit-status)
+(global-set-key (kbd "C-x p") 'thieman-sub-github-names)
 
 (setq initial-scratch-message "")
 
