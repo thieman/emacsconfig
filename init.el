@@ -36,6 +36,7 @@
     magit-popup
     markdown-mode
     minimap
+    multiple-cursors
     powerline
     projectile
     rainbow-delimiters
@@ -64,7 +65,8 @@
 ;; Dope stuff to make GitHub easier
 
 (setq thieman-github-names
-      '(("@erik" "@eriktaubeneck")
+      '(("@travis" "@thieman")
+        ("@erik" "@eriktaubeneck")
         ("@ben" "@inlinestyle")
         ("@nick" "@nrschultz")
         ("@alex" "@paetling")
