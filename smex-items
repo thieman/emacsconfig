@@ -1,28 +1,28 @@
 
 ;; ----- smex-history -----
 (
- revert-buffer
- customize-option
- customize-mode
- revert-all-buffers
- list-packages
- thieman-install-packages
+ eval-buffer
  ag
+ ert
+ magit-gh-pulls-reload
+ comment-region
+ uncomment-region
+ emacs-lisp-mode
 )
 
 ;; ----- smex-data -----
 (
  (python-mode . 1)
  (replace-regexp . 1)
- (ag . 22)
- (thieman-install-packages . 6)
+ (ag . 24)
+ (thieman-install-packages . 7)
  (package-initialize . 1)
- (list-packages . 16)
+ (list-packages . 19)
  (go-mode . 5)
  (magit-blame-mode . 6)
  (circe . 1)
  (godef-jump . 1)
- (eval-buffer . 1)
+ (eval-buffer . 6)
  (package-install-from-buffer . 1)
  (revert-all-buffers . 6)
  (replace-string . 1)
@@ -49,4 +49,9 @@
  (customize-mode . 1)
  (customize-option . 1)
  (jedi-mode . 1)
+ (magit-gh-pulls-reload . 4)
+ (emacs-lisp-mode . 1)
+ (comment-region . 2)
+ (uncomment-region . 1)
+ (ert . 1)
 )
