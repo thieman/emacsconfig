@@ -150,6 +150,7 @@
 (setq handlebars-basic-offset 4)
 (setq js-indent-level 4)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . jinja2-mode))  ;; use jinja2-mode for html files
+(global-auto-revert-mode)
 
 ; key bindings
 (when-not-arm (global-set-key (kbd "M-x") 'smex))
