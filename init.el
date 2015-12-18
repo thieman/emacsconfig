@@ -16,6 +16,7 @@
     color-theme-sanityinc-tomorrow
     dash-at-point
     dired+
+    discover-my-major
     dockerfile-mode
     exec-path-from-shell
     flx-ido
@@ -45,6 +46,8 @@
     soundcloud
     sublime-themes
     undo-tree
+    visual-regexp
+    visual-regexp-steroids
     wsd-mode
     yaml-mode))
 
@@ -367,4 +370,11 @@
             (require 'magit-gh-pulls)
             (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))
 
-(google-this-mode 1)
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'google-this)
+            (google-this-mode 1)))
+
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'visual-regexp)))
