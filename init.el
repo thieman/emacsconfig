@@ -12,8 +12,8 @@
     clojure-cheatsheet
     clojure-mode
     coffee-mode
-    color-theme-sanityinc-tomorrow
     color-theme-sanityinc-solarized
+    color-theme-sanityinc-tomorrow
     dash-at-point
     dired+
     dockerfile-mode
@@ -23,13 +23,14 @@
     go-mode
     go-play
     go-projectile
+    google-this
     handlebars-mode
     helm
     helm-projectile
     jedi
     jinja2-mode
-    js2-mode
     js-doc
+    js2-mode
     less-css-mode
     lua-mode
     magit
@@ -161,6 +162,7 @@
 (global-set-key (kbd "C-c C-p") 'compile)
 (global-set-key (kbd "M-s") 'magit-status)
 (global-set-key (kbd "C-x p") 'thieman-sub-github-names)
+(global-set-key (kbd "C-c /") 'google-this-mode-submap)
 
 (setq initial-scratch-message "")
 
@@ -364,3 +366,5 @@
           (lambda ()
             (require 'magit-gh-pulls)
             (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))
+
+(google-this-mode 1)
