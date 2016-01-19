@@ -42,6 +42,7 @@
     powerline
     projectile
     rainbow-delimiters
+    rainbow-mode
     smex
     soundcloud
     sublime-themes
@@ -302,12 +303,23 @@
          (ido-everywhere t)
          (flx-ido-mode t)
          (setq ido-use-faces nil)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#1D2021" :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Source Code Pro for Powerline")))))
+ '(default ((t (:inherit nil :stipple nil :background "#1D2021" :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Source Code Pro for Powerline"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#B2519C"))))
+ '(rainbow-delimiters-depth-2-face ((t (:foreground "#CAA2CD"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "#9B85AE"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "#B5BEDB"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "#7DD3CE"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "#97CC85"))))
+ '(rainbow-delimiters-depth-7-face ((t (:foreground "#ECEF7A"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "#EEB37D"))))
+ '(rainbow-delimiters-depth-9-face ((t (:foreground "#9192BA"))))
+ '(rainbow-delimiters-unmatched-face ((t (:foreground "#F00")))))
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -378,3 +390,9 @@
 (add-hook 'after-init-hook
           (lambda ()
             (require 'visual-regexp)))
+
+;; Rainbow delimiters
+(add-hook 'after-init-hook
+          (lambda ()
+            (global-rainbow-delimiters-mode)
+            (rainbow-mode)))
