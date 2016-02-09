@@ -1,3 +1,5 @@
+(setq gc-cons-threshold 100000000)
+
 (when (boundp 'package-pinned-packages)
   (setq package-pinned-packages
         '(("magit" . "melpa-stable"))))
@@ -249,6 +251,10 @@
 (setq ag-highlight-search 't)
 (setq ag-reuse-buffers 't)
 (setq ag-reuse-window 't)
+(setq compilation-scroll-output 'first-error)
+(add-hook 'ag-search-finished-hook
+          (lambda ()
+            (pop-to-buffer next-error-last-buffer)))
 
 ;; powerline
 (after 'powerline (powerline-default-theme))
@@ -310,14 +316,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#1D2021" :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "nil" :family "Source Code Pro for Powerline"))))
- '(rainbow-delimiters-depth-1-face ((t (:foreground "#B2519C"))))
- '(rainbow-delimiters-depth-2-face ((t (:foreground "#CAA2CD"))))
- '(rainbow-delimiters-depth-3-face ((t (:foreground "#9B85AE"))))
- '(rainbow-delimiters-depth-4-face ((t (:foreground "#B5BEDB"))))
- '(rainbow-delimiters-depth-5-face ((t (:foreground "#7DD3CE"))))
- '(rainbow-delimiters-depth-6-face ((t (:foreground "#97CC85"))))
+ '(rainbow-delimiters-depth-1-face ((t (:foreground "#EEb37D"))))
+ '(rainbow-delimiters-depth-3-face ((t (:foreground "#7DD3CE"))))
+ '(rainbow-delimiters-depth-4-face ((t (:foreground "#97CC85"))))
+ '(rainbow-delimiters-depth-5-face ((t (:foreground "#B5BEDB"))))
+ '(rainbow-delimiters-depth-6-face ((t (:foreground "#9B85AE"))))
  '(rainbow-delimiters-depth-7-face ((t (:foreground "#ECEF7A"))))
- '(rainbow-delimiters-depth-8-face ((t (:foreground "#EEB37D"))))
+ '(rainbow-delimiters-depth-8-face ((t (:foreground "#B2519C"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "#9192BA"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "#F00")))))
 
@@ -392,7 +397,11 @@
             (require 'visual-regexp)))
 
 ;; Rainbow delimiters
-(add-hook 'after-init-hook
-          (lambda ()
-            (global-rainbow-delimiters-mode)
-            (rainbow-mode)))
+;; (add-hook 'after-init-hook
+;;           (lambda ()
+;;             (global-rainbow-delimiters-mode)))
+
+;; Support for mega widescreen monitor
+(setq split-height-threshold 1000)
+(setq split-width-threshold 1000)
+(set-face-attribute 'default nil :height 130)
