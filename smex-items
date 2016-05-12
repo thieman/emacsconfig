@@ -1,38 +1,38 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
+ magit-blame
  ag
- ert
- magit-gh-pulls-reload
- comment-region
- uncomment-region
- emacs-lisp-mode
+ python-mode
+ dired
+ file-name-clipboard
+ rainbow-delimiters-mode
+ rainbow-mode
 )
 
 ;; ----- smex-data -----
 (
- (python-mode . 1)
- (replace-regexp . 1)
- (ag . 24)
+ (python-mode . 5)
+ (replace-regexp . 12)
+ (ag . 626)
  (thieman-install-packages . 7)
  (package-initialize . 1)
- (list-packages . 19)
- (go-mode . 5)
+ (list-packages . 24)
+ (go-mode . 6)
  (magit-blame-mode . 6)
  (circe . 1)
- (godef-jump . 1)
+ (godef-jump . 2)
  (eval-buffer . 6)
  (package-install-from-buffer . 1)
- (revert-all-buffers . 6)
- (replace-string . 1)
- (file-name-clipboard . 1)
- (rename-file . 1)
+ (revert-all-buffers . 20)
+ (replace-string . 75)
+ (file-name-clipboard . 18)
+ (rename-file . 4)
  (markdown-mode . 1)
  (copy-file . 2)
- (revert-buffer . 13)
+ (revert-buffer . 28)
  (toggle-word-wrap . 1)
- (ido-mode . 2)
+ (ido-mode . 14)
  (color-theme-sanityinc-solarized-light . 3)
  (color-theme-sanityinc-solarized-dark . 1)
  (load-theme . 1)
@@ -43,7 +43,7 @@
  (package-menu-mark-upgrades . 1)
  (git-commit-mode . 2)
  (magit-status . 2)
- (magit-blame . 7)
+ (magit-blame . 64)
  (package-list-packages . 1)
  (magit-gh-pulls-merge-pull-request . 1)
  (customize-mode . 1)
@@ -51,7 +51,30 @@
  (jedi-mode . 1)
  (magit-gh-pulls-reload . 4)
  (emacs-lisp-mode . 1)
- (comment-region . 2)
- (uncomment-region . 1)
+ (comment-region . 13)
+ (uncomment-region . 7)
  (ert . 1)
+ (dired . 64)
+ (mc/edit-lines . 35)
+ (sql-mode . 2)
+ (dired-find-file . 1)
+ (make-directory . 1)
+ (yaml-mode . 4)
+ (linum-mode . 4)
+ (godef-describe . 1)
+ (magit-log . 1)
+ (go-oracle-peers . 2)
+ (go-oracle-callers . 17)
+ (go-oracle-set-scope . 1)
+ (go-oracle-callgraph . 1)
+ (smex . 1)
+ (balance-windows . 3)
+ (balance-windows-area . 1)
+ (go-oracle-mode . 1)
+ (go-play-buffer . 1)
+ (align-highlight-rule . 1)
+ (json-format . 1)
+ (fundamental-mode . 1)
+ (rainbow-mode . 1)
+ (rainbow-delimiters-mode . 1)
 )

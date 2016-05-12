@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        go-mode-insert-and-indent
         kill-region
         ))
 

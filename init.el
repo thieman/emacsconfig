@@ -153,7 +153,7 @@
 (setq require-final-newline 't)
 (setq-default indent-tabs-mode nil)  ; seriously, fuck tabs
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq sgml-basic-offset 2)  ; use 2 space indent in html mode
+(setq sgml-basic-offset 4)  ; use 4 space indent in html mode
 (setq handlebars-basic-offset 4)
 (setq js-indent-level 4)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . jinja2-mode))  ;; use jinja2-mode for html files
@@ -404,4 +404,4 @@
 ;; Support for mega widescreen monitor
 (setq split-height-threshold 1000)
 (setq split-width-threshold 1000)
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 110)
