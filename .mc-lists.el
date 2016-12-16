@@ -5,8 +5,10 @@
       '(
         go-mode-insert-and-indent
         kill-region
+        typescript-insert-and-indent
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        beginning-of-buffer
         ))

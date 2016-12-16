@@ -2,8 +2,12 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- '(("www.websequencediagrams.com"
-  [url-cookie "PHPSESSID" "30RZJ0ssK1XhFXRgfsI88o6x3yoVKDXm" "Sun, 15 Feb 2015 01:03:40 GMT" "/" "www.websequencediagrams.com" nil]))
+ '((".spotify.com"
+  [url-cookie "sp_landing" "http%3A%2F%2Fopen.spotify.com%2Falbum%2F72aDpuZMFhwJyQAvJDJX66" "23-Jul-2016 17:58:11.00 GMT" "/" ".spotify.com" nil]
+  [url-cookie "Max-Age" "86400" "23-Jul-2016 17:58:11.00 GMT" "/" ".spotify.com" nil])
+ ("spotify.com"
+  [url-cookie "sp_t" "d38796d8545ab85d7569b00ff86c529b" "22-Jul-2018 17:58:11.00 GMT" "/" "spotify.com" nil]
+  [url-cookie "Max-Age" "63072000" "22-Jul-2018 17:58:11.00 GMT" "/" "spotify.com" nil]))
 )
 (setq url-cookie-secure-storage
  'nil)
