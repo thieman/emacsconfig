@@ -1,4 +1,5 @@
 (setq gc-cons-threshold 100000000)
+(setq load-prefer-newer t)
 
 (when (boundp 'package-pinned-packages)
   (setq package-pinned-packages
@@ -49,6 +50,7 @@
     smex
     soundcloud
     sublime-themes
+    terraform-mode
     tide
     undo-tree
     visual-regexp
@@ -362,7 +364,7 @@
 ;; go-mode
 (defun my-go-mode-hook ()
   ; Use goimports instead of gofmt
-  (setq gofmt-command "goimports")
+  ;; (setq gofmt-command "goimports")
   ; Call Gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
   ; Customize compile command to run go build
@@ -371,9 +373,7 @@
            "go build -v && go test -v && go vet"))
   ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "C-c .") 'godef-jump)
-  ; Praise Go Oracle
-  (go-oracle-mode))
+  (local-set-key (kbd "C-c .") 'godef-jump))
 
 (after 'go-mode
        (require 'go-projectile)
@@ -432,3 +432,5 @@
 ;; format options
 (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
 (put 'upcase-region 'disabled nil)
+
+(add-hook 'terraform-mode-hook #'terraform-format-on-save-mode)
