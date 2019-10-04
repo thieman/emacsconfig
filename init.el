@@ -1,35 +1,16 @@
-(setq gc-cons-threshold 100000000)
-(setq load-prefer-newer t)
-
-(when (boundp 'package-pinned-packages)
-  (setq package-pinned-packages
-        '(("magit" . "melpa-stable"))))
-
 (setq user-packages
   '(ace-jump-mode
     ag
-    auto-complete
     cherry-blossom-theme
-    cider
-    circe
-    clojure-cheatsheet
-    clojure-mode
-    coffee-mode
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
     company
-    dash-at-point
-    dired+
     discover-my-major
     dockerfile-mode
     exec-path-from-shell
     flx-ido
-    gh
     go-mode
-    go-play
     go-projectile
-    google-this
-    handlebars-mode
     helm
     helm-projectile
     jedi
@@ -39,16 +20,13 @@
     less-css-mode
     lua-mode
     magit
-    magit-popup
     markdown-mode
-    minimap
     multiple-cursors
     powerline
     projectile
     rainbow-delimiters
     rainbow-mode
     smex
-    soundcloud
     sublime-themes
     terraform-mode
     tide
@@ -62,6 +40,7 @@
   "Install any missing packages from the package list."
   (interactive)
   (require 'package)
+  (package-initialize)
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.org/packages/")
                '("melpa-stable" . "http://stable.melpa.org/packages/"))
@@ -72,35 +51,6 @@
         (package-refresh-contents)
         (setq packages-refreshed 't))
       (package-install p))))
-
-;; Dope stuff to make GitHub easier
-
-(setq thieman-github-names
-      '(("@travis" "@thieman")
-        ("@erik" "@eriktaubeneck")
-        ("@ben" "@inlinestyle")
-        ("@nick" "@nrschultz")
-        ("@alex" "@paetling")
-        ("@kristian" "@kristiankristensen")
-        ("@ami" "@ami-kumar")
-        ("@gabby" "@gmr33")
-        ("@coolalex" "@aehsu")
-        ("@tom" "@tleach")
-        ("@jerry" "@confucious")
-        ("@eduardo" "@eduarenas80")
-        ("@jason" "@jasonmorganson")
-        ("@matt" "@mmccann34")))
-
-(defun thieman-sub-github-names ()
-  (interactive)
-  (save-excursion
-    (dolist (pair thieman-github-names acc)
-      (let ((simple-name (first pair))
-            (full-name (car (last pair))))
-        (beginning-of-buffer)
-        (replace-string simple-name full-name)
-        (setq acc '())))
-    (message nil)))
 
 (defmacro after (mode &rest body)
   `(eval-after-load ,mode
@@ -158,7 +108,6 @@
 (setq-default indent-tabs-mode nil)  ; seriously, fuck tabs
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq sgml-basic-offset 4)  ; use 4 space indent in html mode
-(setq handlebars-basic-offset 4)
 (setq js-indent-level 4)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . jinja2-mode))  ;; use jinja2-mode for html files
 (global-auto-revert-mode)
@@ -171,8 +120,6 @@
 (global-set-key (kbd "M-p") 'github-pulls)
 (global-set-key (kbd "C-c C-p") 'compile)
 (global-set-key (kbd "M-s") 'magit-status)
-(global-set-key (kbd "C-x p") 'thieman-sub-github-names)
-(global-set-key (kbd "C-c /") 'google-this-mode-submap)
 
 (setq initial-scratch-message "")
 
@@ -212,8 +159,6 @@
 (setq uniquify-separator "@")
 
 (show-paren-mode 1)
-(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode-enable)
-(after 'clojure-mode (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode-enable))
 
 ; custom standard hooks
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -233,6 +178,7 @@
  '(js2-basic-offset 4)
  '(js2-strict-inconsistent-return-warning nil)
  '(magit-revert-buffers (quote silent) t)
+ '(package-selected-packages (quote (ace-jump-mode)))
  '(projectile-test-prefix-function (quote default-projectile-prefix-unless-django))
  '(projectile-test-suffix-function (quote default-projectile-suffix-unless-django))
  '(scroll-bar-mode nil)
@@ -243,7 +189,7 @@
 
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+  (cl-flet ((process-list ())) ad-do-it))
 
 (defun python-custom ()
   "Python mode stuff"
@@ -265,13 +211,6 @@
 
 ;; dired+
 (after 'dired (toggle-diredp-find-file-reuse-dir 1))
-
-;; circe
-(after 'circe
-       (require 'circe-color-nicks)
-       (setq circe-reduce-lurker-spam t)
-       (setq circe-serve-max-reconnect-attempts nil)
-       (enable-circe-color-nicks))
 
 ;; projectile
 (add-hook 'after-init-hook
@@ -353,9 +292,6 @@
 (defadvice other-window (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
 
-;; cider stuff
-(setq cider-show-error-buffer nil)
-
 ;; undo-tree
 (after 'undo-tree
        (require 'undo-tree)
@@ -376,8 +312,7 @@
   (local-set-key (kbd "C-c .") 'godef-jump))
 
 (after 'go-mode
-       (require 'go-projectile)
-       (load-file "$GOPATH/src/code.google.com/p/go.tools/cmd/oracle/oracle.el"))
+       (require 'go-projectile))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -386,22 +321,7 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            (require 'magit-gh-pulls)
-            (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))
-
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'google-this)
-            (google-this-mode 1)))
-
-(add-hook 'after-init-hook
-          (lambda ()
             (require 'visual-regexp)))
-
-;; Rainbow delimiters
-;; (add-hook 'after-init-hook
-;;           (lambda ()
-;;             (global-rainbow-delimiters-mode)))
 
 ;; Support for mega widescreen monitor
 (setq split-height-threshold 1000)
