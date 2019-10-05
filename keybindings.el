@@ -2,6 +2,6 @@
 (global-set-key (kbd "C-x w") 'whitespace-mode)
 (global-set-key (kbd "C-x j") 'ace-jump-mode)
 (global-set-key (kbd "C-x g") 'ag-project)
-(global-set-key (kbd "C-c C-p") 'compile)
 (global-set-key (kbd "M-s") 'magit-status)
+(global-set-key (kbd "C-c p") 'projectile-command-map)
 (global-set-key [f11] 'toggle-fullscreen)
