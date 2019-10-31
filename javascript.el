@@ -1,4 +1,4 @@
-(setq js-indent-level 4)
+(setq js-indent-level 2)
 
 ;; use js2-mode for js files
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
