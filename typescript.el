@@ -7,7 +7,8 @@
             (setq flycheck-check-syntax-automatically '(save mode-enabled))
             (eldoc-mode +1)
             (local-set-key (kbd "C-c .") 'tide-jump-to-definition)
-            (setq flycheck-checker 'javascript-eslint)
+            (setq flycheck-checker 'typescript-tide)
+            (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
             (setq flycheck-eslint-args '("--ext" ".js,.ts"))))
 
 ;; formats the buffer before saving
