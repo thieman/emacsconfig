@@ -13,6 +13,7 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+(setq create-lockfiles nil)
 
 ;  https://www.emacswiki.org/emacs/YesOrNoP#toc1
 (defalias 'yes-or-no-p 'y-or-n-p)
