@@ -27,6 +27,7 @@
     projectile
     rainbow-delimiters
     rainbow-mode
+    rjsx-mode
     smex
     sublime-themes
     terraform-mode
