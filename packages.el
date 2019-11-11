@@ -11,6 +11,7 @@
     flx-ido
     go-mode
     go-projectile
+    graphql-mode
     helm
     helm-projectile
     jedi
