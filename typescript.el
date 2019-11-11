@@ -1,5 +1,7 @@
 (setq-default typescript-indent-level 2)
 
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+
 (add-hook 'typescript-mode-hook
           (lambda ()
             (tide-setup)
@@ -9,7 +11,7 @@
             (local-set-key (kbd "C-c .") 'tide-jump-to-definition)
             (setq flycheck-checker 'typescript-tide)
             (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
-            (setq flycheck-eslint-args '("--ext" ".js,.ts"))))
+            (setq flycheck-eslint-args '("--ext" ".js,.ts,.jsx,.tsx"))))
 
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'tide-format-before-save)
