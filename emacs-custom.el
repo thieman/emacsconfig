@@ -25,7 +25,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#1D2021" :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight medium :height 120 :width normal :foundry "nil" :family "Source Code Pro for Powerline"))))
+ '(default ((t (:inherit nil :stipple nil :background "#1D2021" :foreground "#F8F8F2" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight medium :height 110 :width normal :foundry "nil" :family "Source Code Pro for Powerline"))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "#EEb37D"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "#7DD3CE"))))
  '(rainbow-delimiters-depth-4-face ((t (:foreground "#97CC85"))))
