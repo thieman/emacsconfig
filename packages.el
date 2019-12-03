@@ -23,6 +23,7 @@
     magit
     markdown-mode
     multiple-cursors
+    nginx-mode
     powerline
     projectile
     rainbow-delimiters
